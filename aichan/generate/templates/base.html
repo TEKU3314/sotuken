@@ -34,7 +34,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark navbar-custom
             fixed-top">
                 <div class="container">
-                        <a class="navbar-brand" href="#">PRIVATE DIARY</a>
+                        <a class="navbar-brand" href="#">AI chan</a>
                         <button class="navbar-toggler" type="button" data-toggle="c
                         ollapse" data-target="#navbarResponsive" arei-controls="navbaraResponsive"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -43,33 +43,19 @@
                     <div class="collapse navbar-collapse" id="navbaraResponsive">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item {% block active_inquiry %}{% endblock%}">
-                                <a class="nav-link" href="#">INQUIRY</a>
+                                <a class="nav-link" href="{% url 'generate:generate' %}">generate</a>
                             </li>
-                            {% if user.is_authenticated %}
+                            {% if not user.is_authenticated %}
                             <li class="nav-item {% block active_my_diary_list %}{% endblock %}">
-                                <a class="nav-link" href="#">MY DIARY LIST</a>
+                                <a class="nav-link" href="#">identify</a>
                             </li>
                             {% endif %}
                             {% if not user.is_authenticated %}
                             <li class="nav-item {% block active_diary_list %}{% endblock %}">
-                                <a class="nav-link" href="#">DIARY LIST</a>
+                                <a class="nav-link" href="#">modify</a>
                             </li>
                             {% endif %}
 
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
-                            {% if user.is_authenticated %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Log Out</a>
-                                </li>
-                            {% else %}                           
-                                <li class="nav-item {% block active_signup %}{% endblock %}">
-                                    <a class="nav-link" href="#">Sign Up</a>
-                                </li>
-                                <li class="nav-item {% block active_login %}{% endblock %}">
-                                    <a class="nav-link" href="#">Log In</a>
-                                </li>
-                            {% endif %}
                         </ul>
                     </div>
                 </div>
