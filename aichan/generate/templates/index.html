@@ -1,10 +1,115 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>トップページ</title>
-    </head>
-    <body>
-        <h1>hello world</h1>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Web上にあなた専用の日記ページを保存できるサービス｜Private Diary{% endblock %}
+
+{% block contents %}
+    <div id="splash">
+        <div id="splash_text"></div>
+    </div>
+    <div id="slider"></div>
+    <nav class="social">
+        <ul>
+            <li class="blue"><a href="https://twitter.com/TEKU44936068">Twitter <i class="fab fa-twitter"></i></i></a></li>
+            <li class="red"><a href="https://youtube.com/">Yotube <i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://discord.com/">Discord <i class="fab fa-discord"></i></a></li>
+        </ul>
+    </nav>
+    <ul class="slider">
+        <li><a href="#"><span>2021.11.01</span>1つめのニュースの記事です。</a></li>
+        <li><a href="#"><span>2021.11.02</span>2つめのニュースの記事です。</a></li>
+        <li><a href="#"><span>2021.11.03</span>3つめのニュースの記事です。</a></li>
+    </ul>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/01.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">Web Diary</h2>
+                        <p>Web上で作成/編集/削除ができる日記</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="p-5">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/02.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-5">
+                        <h2 class="display-4">Save Your Diary</h2>
+                        <p>あなたの日記をWebに保存</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/03.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">Membership System</h2>
+                        <p>会員制のWeb日記サービス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section>
+        <h2 class="btn--orange"><span>このサイトの作成者</span></h2>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 ">
+                    <div class="p-4">
+                        <img class="rounded-circle iconmy" src="{% static 'img/03.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 ">
+                    <div class="p-4">
+                        <p class="tekuname">TEKU</p>
+                        <p class="tekuprofile">野球観戦・ランニングが趣味です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="iconset">
+            <a class="sns_btn btn_twitter" href="#" rel="author">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a class="sns_btn btn_youtube" href="#" rel="author">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a class="sns_btn btn_discord" href="#" rel="author">
+              <i class="fab fa-discord"></i>
+            </a>
+        </div>
+    </section>
+
+
+
+
+    <p id="page-top"><a href="#">Page Top</a></p>
+
+{% endblock %}
