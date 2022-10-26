@@ -1,0 +1,13 @@
+.naname  {
+    transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+}
+
+.head {
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
