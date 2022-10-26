@@ -21,6 +21,12 @@
 
         <!-- My style-->
         <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
+
+        <!-- 各々のCSSファイル参照　-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/tabi.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/squno.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/kaneta.css' %}">
+
         {%block head %}{% endblock %}
         <link href='https://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'> 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -81,7 +87,12 @@
             <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/master/dist/progressbar.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.4.4/vegas.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
-            <script src="{% static 'js/my.js' %}"></script>
+
+            <!-- 各々のjsファイルの参照 -->
+            <script src="{% static 'js/tabi.js' %}"></script>
+            <script src="{% static 'js/squno.js' %}"></script>
+            <script src="{% static 'js/kaneta.js' %}"></script>
+
         </div>
     </body>
 </html>
