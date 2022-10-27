@@ -6,8 +6,10 @@ class IndexView(generic.TemplateView):
 class GenetateView(generic.TemplateView):
     template_name = "generate.html"
 
+
 class GenerateConfirmView():
     template_name = "generate_confirm.html"
+
 
 class GenerateFinishView():
     template_name = "generate_finish.html"
