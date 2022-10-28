@@ -6,33 +6,66 @@
 
 {% block contents %}
 <!-- 田平氏　-->
+<!--<link rel="stylesheet" href="./css/tabi.css">-->
 <form action="#" method="post">
-    <div>
-        <h3>○○風</h3>
-        <input type="checkbox" name="ish"  value="fantasy">ファンタジー
-        <input type="checkbox" name="ish"  value="ghibli">ジブリ
-        <input type="checkbox" name="ish"  value="horror">ホラー
+    <div class="container">
+        <div class="check-container">
+            <h3>○○風</h3>
+            <input type='checkbox' id='ish'></input>
+            <label for='ish'></label>
+            <span class='tag'>ファンタジー</span>
+            <input type='checkbox' id='ish'></input>
+            <label for='ish'></label>
+            <span class='tag'>ジブリ</span>
+            <input type='checkbox' id='ish'></input>
+            <label for='ish'></label>
+            <span class='tag'>ホラー</span>
+        </div>
     </div>
 
     <div>
-        <h3>建物</h3>
-        <input type="checkbox" name="building"  value="castre">城
-        <input type="checkbox" name="building"  value="buil">ビル
-        <input type="checkbox" name="building"  value="school">学校
+        <div class="check-container">
+            <h3>建物</h3>
+            <input type='checkbox' id='building'></input>
+            <label for='building'></label>
+            <span class='tag'>城</span>
+            <input type='checkbox' id='building'></input>
+            <label for='building'></label>
+            <span class='tag'>ビル</span>
+            <input type='checkbox' id='building'></input>
+            <label for='building'></label>
+            <span class='tag'>学校</span>
+        </div>
     </div>
 
     <div>
-        <h3>自然</h3>
-        <input type="checkbox" name="nature"  value="sakura">桜
-        <input type="checkbox" name="nature"  value="momiji">紅葉
-        <input type="checkbox" name="nature"  value="snow">雪
+        <div class="check-container">
+            <h3>自然</h3>
+            <input type='checkbox' id='nature'></input>
+            <label for='nature'></label>
+            <span class='tag'>桜</span>
+            <input type='checkbox' id='nature'></input>
+            <label for='nature'></label>
+            <span class='tag'>紅葉</span>
+            <input type='checkbox' id='nature'></input>
+            <label for='nature'></label>
+            <span class='tag'>雪</span>
+            </div>
     </div>
 
     <div>
-        <h3>動物</h3>
-        <input type="checkbox" name="animal"  value="dog">犬
-        <input type="checkbox" name="animal"  value="cat">猫
-        <input type="checkbox" name="animal"  value="shark">サメ
+        <div class="check-container">
+            <h3>動物</h3>
+            <input type='checkbox' id='animal'></input>
+            <label for='nature'></label>
+            <span class='tag'>犬</span>
+            <input type='checkbox' id='animal'></input>
+            <label for='nature'></label>
+            <span class='tag'>猫</span>
+            <input type='checkbox' id='animal'></input>
+            <label for='nature'></label>
+            <span class='tag'>サメ</span>
+        </div>
     </div>
 </form>
 <!-- 田平氏　-->
