@@ -1,7 +1,7 @@
 var windowwidth = window.innerWidth || document.documentElement.clientWidth || 0;
     if (windowwidth > 768){
       var responsiveImage = [//PC用の画像
-        { src: './static/img/jumon1.1.png'},
+        { src: './static/img/jumon1.png'},
         { src: './static/img/jumon8.6.png'},
         { src: './static/img/jumon3.2.png'},
         { src: './static/img/jumon13.png'},

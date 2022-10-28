@@ -8,16 +8,24 @@
 <link rel="stylesheet" href="css/squno.css">
     <body>
         <style type="text/css">
-            body {
+            body{ 
 			    margin: 0px 15%;			/* 外側の余白を、上下はゼロで左右は画面横幅の15％に */
 			    padding: 0px;				/* 内側の余白をゼロに */
 			    background-color: black;	/* 本文部分の背景色は白色 */
 
 			    border-left: white solid 1px;		/* (任意)左側背景と本文領域との間に1pxの線を引く */
 			    border-right: white solid 1px		/* (任意)右側背景と本文領域との間に1pxの線を引く */;
-		    }
+
+                text-align: right;
+            }
         </style>
         
         <div id="slider"></div>
+        
+        <div class="overlay1" style="right:0%">
+            <img src="./static/img/jumon1.png" width="30%">
+        </div>
+       
+        
     </body>
 {% endblock %}
