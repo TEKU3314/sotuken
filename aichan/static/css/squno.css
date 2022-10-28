@@ -21,11 +21,6 @@
     margin-bottom:4rem;
 }
 
-.right{
-    width:  100px;
-    text-align: right;
-}
-
 .overlay1::after {
     content: "";
     position: relative;

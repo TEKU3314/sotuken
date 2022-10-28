@@ -1,9 +1,28 @@
-body,#wrapper {
-    display: flex;
-    flex-direction: column;
+#wrapper {
     min-height: 100vh;
+
+    margin: 0px 15%;			/* 外側の余白を、上下はゼロで左右は画面横幅の15％に */
+    padding: 0px;				/* 内側の余白をゼロに */
+    background-color: black;	/* 本文部分の背景色は白色 */
+
+    border-left: white solid 1px;		/* (任意)左側背景と本文領域との間に1pxの線を引く */
+    border-right: white solid 1px		/* (任意)右側背景と本文領域との間に1pxの線を引く */;
+
+    
 } 
 
+body{
+  min-height: 100vh;
+
+    margin: 0px 15%;			/* 外側の余白を、上下はゼロで左右は画面横幅の15％に */
+    padding: 0px;				/* 内側の余白をゼロに */
+    background-color: black;	/* 本文部分の背景色は白色 */
+
+    border-left: white solid 1px;		/* (任意)左側背景と本文領域との間に1pxの線を引く */
+    border-right: white solid 1px		/* (任意)右側背景と本文領域との間に1pxの線を引く */;
+
+  
+}
 
 footer {
     margin-top: auto;
@@ -51,18 +70,6 @@ footer {
     padding: 0 1em;
     background: #fff;
   }
-
-.tekuname{
-    padding-bottom:40px;
-    font-size: 30px;
-    font-family: sans-serif;
-}
-
-.tekuprofile{
-    padding-bottom:40px;
-    font-size: 20px;
-    font-family: sans-serif;
-}
 
 /**  ブログ　**/
 .title {
@@ -166,23 +173,4 @@ footer {
     word-wrap: break-word; 
  }
 
- .author {
-    position:relative;
-    margin-top:20px;
-    margin-left:75%;
- }
-
- .button {
-    position:relative;
-    margin-left:10%;
- }
-
- .tag {
-    margin-left:100px;
-    margin-top:20rem;
-    width:100px;
- }
-
- .contentkk {
-    display:flex;
- }
+ 
