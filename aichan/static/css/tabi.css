@@ -63,9 +63,7 @@ body {
   left:0;
   margin:auto;
 }
-input[type='checkbox']{
-  display:none;
-}
+
 .check-container {
   display:inline-block;
   position:relative;

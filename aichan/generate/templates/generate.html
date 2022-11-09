@@ -7,66 +7,58 @@
 {% block contents %}
 <!-- 田平氏　-->
 <!--<link rel="stylesheet" href="./css/tabi.css">-->
-<form action="#" method="post">
-    <div class="container">
-        <div class="check-container">
-            <h3>○○風</h3>
-            <input type='checkbox' id='ish'></input>
-            <label for='ish'></label>
-            <span class='tag'>ファンタジー</span>
-            <input type='checkbox' id='ish'></input>
-            <label for='ish'></label>
-            <span class='tag'>ジブリ</span>
-            <input type='checkbox' id='ish'></input>
-            <label for='ish'></label>
-            <span class='tag'>ホラー</span>
-        </div>
-    </div>
+<div class="my-div-style">
+    
+    <form action="#" method="post">
 
-    <div>
-        <div class="check-container">
-            <h3>建物</h3>
-            <input type='checkbox' id='building'></input>
-            <label for='building'></label>
-            <span class='tag'>城</span>
-            <input type='checkbox' id='building'></input>
-            <label for='building'></label>
-            <span class='tag'>ビル</span>
-            <input type='checkbox' id='building'></input>
-            <label for='building'></label>
-            <span class='tag'>学校</span>
-        </div>
-    </div>
-
-    <div>
-        <div class="check-container">
-            <h3>自然</h3>
-            <input type='checkbox' id='nature'></input>
-            <label for='nature'></label>
-            <span class='tag'>桜</span>
-            <input type='checkbox' id='nature'></input>
-            <label for='nature'></label>
-            <span class='tag'>紅葉</span>
-            <input type='checkbox' id='nature'></input>
-            <label for='nature'></label>
-            <span class='tag'>雪</span>
+        <h3>○○風</h3>
+        {% for object in object_list %}    
+            {% if object.name ==  'style' %}
+            <div>    
+                <input type="checkbox" name="style"  value="{{ object.word_en}}"> {{ object.word }}
             </div>
-    </div>
+            {% endif %}
+        {% endfor %}
 
-    <div>
-        <div class="check-container">
-            <h3>動物</h3>
-            <input type='checkbox' id='animal'></input>
-            <label for='nature'></label>
-            <span class='tag'>犬</span>
-            <input type='checkbox' id='animal'></input>
-            <label for='nature'></label>
-            <span class='tag'>猫</span>
-            <input type='checkbox' id='animal'></input>
-            <label for='nature'></label>
-            <span class='tag'>サメ</span>
-        </div>
-    </div>
-</form>
+        <h3>自然</h3>
+        {% for object in object_list %}  
+            {% if object.name ==  'nature' %}
+            <div>
+                <input type="checkbox" name="nature"  value="{{ object.word_en}}"> {{ object.word }}
+            </div>
+            {% endif %}
+        {% endfor %}
+
+        <h3>建物</h3>
+        {% for object in object_list %}  
+            {% if object.name ==  'building' %}
+                <div>
+                    <input type="checkbox" name="building"  value="{{ object.word_en}}"> {{ object.word }}                
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <h3>海</h3>
+        {% for object in object_list %}
+            {% if object.name ==  'sea' %}
+            <div>       
+                <input type="checkbox" name="sea"  value="{{ object.word_en}}"> {{ object.word }}
+            </div>
+            {% endif %}
+        {% endfor %}
+
+        <h3>動物</h3>
+        {% for object in object_list %} 
+            {% if object.name ==  'animal' %}
+            <div>
+                <input type="checkbox" name="animal"  value="{{ object.word_en}}"> {{ object.word }}
+            </div>
+            {% endif %}
+        {% endfor %}
+        
+        <input type="submit" value="生成">
+        
+    </form>
+</div>
 <!-- 田平氏　-->
 {% endblock %}
