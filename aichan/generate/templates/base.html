@@ -15,19 +15,26 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/tabi.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/squno.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/kaneta.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/tsuji.css' %}">
 
         {%block head %}{% endblock %}
     </head>
 
     <body>
         <div id="wrapper">
-            <!-- Navigation-->
-            <nav>
-                
-            </nav>
-            
 
-            {% block header%} {% endblock %}
+            <header>
+                <h1 class="headline">
+                    <a>AI chan</a>
+                </h1>
+                <ul class="nav-list">
+                    <li class="nav-list-item">
+                        <a href="{% url 'generate:generate' %}">generate</a>
+                    </li>
+                    <li class="nav-list-item">identify</li>
+                    <li class="nav-list-item">modify</li>
+                </ul>
+            </header>
 
     
 
@@ -44,6 +51,7 @@
             <script src="{% static 'js/tabi.js' %}"></script>
             <script src="{% static 'js/squno.js' %}"></script>
             <script src="{% static 'js/kaneta.js' %}"></script>
+            <script src="{% static 'js/tsuji.js' %}"></script>
 
         </div>
     </body>
