@@ -32,9 +32,9 @@
         <h3>建物</h3>
         {% for object in object_list %}  
             {% if object.name ==  'building' %}
-                <div>
-                    <input type="checkbox" name="building"  value="{{ object.word_en}}"> {{ object.word }}                
-                </div>
+            <div>
+                <input type="checkbox" name="building"  value="{{ object.word_en}}"> {{ object.word }}                
+            </div>
             {% endif %}
         {% endfor %}
 
