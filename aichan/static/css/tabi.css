@@ -114,10 +114,12 @@ input[type='checkbox']:checked + label:before {
   border-left:4px solid #2ecc71;
 }
 
+/* ローディング画面を表示する */
 .hide {
   display: none;
 }
 
+/* ローディング画面を表示する */
 .loading {
   position: fixed;
   top: 0;

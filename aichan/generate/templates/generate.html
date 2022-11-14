@@ -96,6 +96,7 @@
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader("X-CSRFToken", csrftoken);
                 }
+                //➀loading画面を作成する
                 $('.loading').removeClass('hide');
             }
         });
@@ -107,13 +108,14 @@
             $.ajax({
                 'url': '{% url "generate:make" %}',
                 'type': 'POST',
+                //➁チェックボックスで選択したものをdata送る
                 'data': {
                     'number1': '1'
                 },
                 'dataType': 'json',
             })
             .done(function(respone){
-
+                //➀loading画面を作成する
                 $('.loading').addClass('hide');          
                 $('.msg').append('<p>NAME: ' + 'ss' + '</p>');
 
