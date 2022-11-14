@@ -1,10 +1,21 @@
 from django.views import generic
+from django.http import JsonResponse
 import logging
 
 from .models import Word
 from .models import Type
 
 logger = logging.getLogger(__name__)
+
+def make(request):
+    #画像生成処理
+    
+    
+    number1 = request.POST.get('number1')
+    d = {
+        'plus': number1,
+    }
+    return JsonResponse(d)
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
