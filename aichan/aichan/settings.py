@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'generate.apps.GenerateConfig',
     'identify.apps.IdentifyConfig',
-    'modify.apps.ModifyConfig'
+    'modify.apps.ModifyConfig',
 ]
 
 MIDDLEWARE = [
