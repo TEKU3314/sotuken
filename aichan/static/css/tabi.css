@@ -113,3 +113,21 @@ input[type='checkbox']:checked + label:before {
   width: 100%;  /* or 100px */
   border-left:4px solid #2ecc71;
 }
+
+.hide {
+  display: none;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+  background-image: url(../img/712-88.gif);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: 150px 150px;
+}

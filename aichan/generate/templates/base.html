@@ -17,6 +17,9 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/todo.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/tsuji.css' %}">
 
+        <!-- jQuery-->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
         {%block head %}{% endblock %}
     </head>
 
@@ -47,6 +50,13 @@
                 <p class="footer-copy">Copyright &copy;Fuuuuun 2022</p>
             </footer>
 
+            <!-- jQuery -->
+            <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+            <!-- push.js -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>
+            
             <!-- 各々のjsファイルの参照 -->
             <script src="{% static 'js/tabi.js' %}"></script>
             <script src="{% static 'js/squno.js' %}"></script>
@@ -54,6 +64,6 @@
             <script src="{% static 'js/tsuji.js' %}"></script>
 
         </div>
-        {%block extrajs %}{% endblock %}
+        {% block extrajs %}{% endblock %}
     </body>
 </html>

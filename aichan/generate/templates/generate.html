@@ -8,9 +8,10 @@
 <!-- 田平氏　-->
 <!--<link rel="stylesheet" href="./css/tabi.css">-->
 <div class="my-div-style">
-    
-    <form action="#" method="post">
 
+    <!--　FORM　-->
+    <form action="{% url 'generate:make' %}" id="ajax-number" method="post">
+        {% csrf_token %}
         <h3>○○風</h3>
         {% for object in object_list %}    
             {% if object.name ==  'style' %}
@@ -55,14 +56,79 @@
             </div>
             {% endif %}
         {% endfor %}
-        
         <input type="submit" value="生成">
-        
-    </form>
+    </form>   
+
+    <!-- ダイアログ　-->
+    <div class="msg"></div>
+    <div class="loading hide"></div>
+
 </div>
 {% endblock %}
 
-{%block extrajs %}
+{% block extrajs %}
+<script type="text/javascript">
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
 
+        var csrftoken = getCookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+                $('.loading').removeClass('hide');
+            }
+        });
+
+        //ajaxで送信
+        $('#ajax-number').on('submit', function(e) {
+            event.preventDefault();
+
+            $.ajax({
+                'url': '{% url "generate:make" %}',
+                'type': 'POST',
+                'data': {
+                    'number1': '1'
+                },
+                'dataType': 'json',
+            })
+            .done(function(respone){
+
+                $('.loading').addClass('hide');          
+                $('.msg').append('<p>NAME: ' + 'ss' + '</p>');
+
+                //push.js
+                    Push.create('こんにちは！', {
+                        body: '更新をお知らせします！',
+                        icon: 'index.jpg',
+                        timeout: 5000,
+                        onClick: function () {
+                            this.close();
+                            location.href = 'https://www.yahoo.co.jp';
+                        }
+                    });
+            });
+        });
+</script>
 {% endblock %}
 
