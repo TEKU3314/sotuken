@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+.naname  {
+    transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+}
+
+.head {
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+#slider {
+    width: 100%;
+    height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+    margin-top: 4.1rem;
+    margin-bottom:4rem;
+}
+
+.overlay1::after {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+  }
