@@ -12,51 +12,73 @@
     <!--　FORM　-->
     <form action="{% url 'generate:make' %}" id="ajax-number" method="post">
         {% csrf_token %}
-        <h3>○○風</h3>
-        {% for object in object_list %}    
-            {% if object.name ==  'style' %}
-            <div>    
-                <input type="checkbox" name="style"  value="{{ object.word_en}}"> {{ object.word }}
-            </div>
-            {% endif %}
-        {% endfor %}
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>○○風</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'style' %}
+                <div>                               
+                    <input type="checkbox" name="style"  value="{{ object.word_en}}"> {{ object.word }}                                                        
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
 
-        <h3>自然</h3>
-        {% for object in object_list %}  
-            {% if object.name ==  'nature' %}
-            <div>
-                <input type="checkbox" name="nature"  value="{{ object.word_en}}"> {{ object.word }}
-            </div>
-            {% endif %}
-        {% endfor %}
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>自然</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'nature' %}
+                <div>    
+                   <input type="checkbox" name="nature"  value="{{ object.word_en}}"> {{ object.word }}
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
 
-        <h3>建物</h3>
-        {% for object in object_list %}  
-            {% if object.name ==  'building' %}
-            <div>
-                <input type="checkbox" name="building"  value="{{ object.word_en}}"> {{ object.word }}                
-            </div>
-            {% endif %}
-        {% endfor %}
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>建物</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'building' %}
+                <div>    
+                   <input type="checkbox" name="building"  value="{{ object.word_en}}"> {{ object.word }}
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
 
-        <h3>海</h3>
-        {% for object in object_list %}
-            {% if object.name ==  'sea' %}
-            <div>       
-                <input type="checkbox" name="sea"  value="{{ object.word_en}}"> {{ object.word }}
-            </div>
-            {% endif %}
-        {% endfor %}
-
-        <h3>動物</h3>
-        {% for object in object_list %} 
-            {% if object.name ==  'animal' %}
-            <div>
-                <input type="checkbox" name="animal"  value="{{ object.word_en}}"> {{ object.word }}
-            </div>
-            {% endif %}
-        {% endfor %}
-        <input type="submit" value="生成">
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>海</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'sea' %}
+                <div>    
+                   <input type="checkbox" name="sea"  value="{{ object.word_en}}"> {{ object.word }}
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
+    
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>動物</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'animal' %}
+                <div>    
+                   <input type="checkbox" name="animal"  value="{{ object.word_en}}"> {{ object.word }}
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
+        <div style="text-align: center;">            
+            <input type="submit" value="生成" class="button">
+        </div>
     </form>   
 
     <!-- ダイアログ　-->
@@ -69,6 +91,9 @@
     </div>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="{% static 'js/squno.js' %}"></script>
 {% endblock %}
 
 {% block extrajs %}
