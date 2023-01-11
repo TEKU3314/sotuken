@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Aichan | 画像生成{% endblock %}
+
+{% block contents %}
+<!-- 田平氏　-->
+<!--<link rel="stylesheet" href="./css/tabi.css">-->
+<div class="my-div-style">
+
+    <h1>画像加工</h1>
+
+    <form id="ajax-file-send" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>ファイル：<input type="file" id="uploadfile" name="uploadfile" value=""></p>
+        <p><input type="submit" name="submit"></p>
+    </form>
+
+</div>
+{% endblock %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- scriptタグの位置の確認-->
+<script>
+    function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+$('#ajax-file-send').on('submit', function(e) {
+    e.preventDefault();
+    var fd = new FormData($("#ajax-file-send").get(0));
+    $.ajax({
+        'url': '{% url "modify:ajax_file_send" %}',
+        'type': 'POST',
+        'data': fd,
+        'processData': false,
+        'contentType': false,
+        'dataType': 'json'
+    })
+    .done(function(response){
+        //➀loading画面を作成する
+        $('.loading').addClass('hide');          
+        console.log(response.result);
+        url = 'http://127.0.0.1:8000/download/' + response.result + '/'
+        console.log(url)
+                
+        //push.js
+        Push.create('こんにちは！', {
+            body: '画像が生成できました！',
+            icon: 'index.jpg',
+            timeout: 10000,
+            onClick: function () {
+            this.close();
+            location.href = url;
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+
+
+ 
+
+

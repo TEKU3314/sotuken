@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Aichan | 画像生成{% endblock %}
+
+{% block contents %}
+<!-- 田平氏　-->
+<!--<link rel="stylesheet" href="./css/tabi.css">-->
+<div class="my-div-style">
+
+    <h1>画像加工</h1>
+
+    <form id="ajax-file-send" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>画像サイズ変更</h2>
+                <div>                               
+                    幅：<input type="text" id="width" name="width">
+                    高さ：<input type="text" id="height" name="height">                                                          
+                </div>                      
+            </div>                    
+        </div>
+
+        <input type="hidden" value={{ ID }} name="id">
+
+        <div style="text-align: center;">            
+            <input type="submit" value="生成" class="button" name="submit">
+        </div>
+    </form>
+
+</div>
+{% endblock %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- scriptタグの位置の確認-->
+<script>
+    function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+$('#ajax-file-send').on('submit', function(e) {
+    e.preventDefault();
+    var width='';
+    var height='';
+    var id='';
+
+    width = $('input[name="width"]').val();
+    height = $('input[name="height"]').val();
+    id = $('input[name="id"]').val();
+
+    console.log(width);
+    console.log(height);
+    console.log(id);
+
+    $.ajax({
+        'url': '{% url "modify:ajax_file_generate" %}',
+        'type': 'POST',
+        'dataType': 'json',
+        'data': {
+            "width": width,
+            "height": height,
+            "id": id,
+        }
+    })
+    .done(function(response){
+        //➀loading画面を作成する
+        $('.loading').addClass('hide');          
+        console.log(response.result);
+        url = 'http://127.0.0.1:8000/download/' + response.result + '/'
+        console.log(url)
+                
+        //push.js
+        Push.create('こんにちは！', {
+            body: '画像が生成できました！',
+            icon: 'index.jpg',
+            timeout: 10000,
+            onClick: function () {
+            this.close();
+            location.href = url;
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+
+
+ 
+
+
