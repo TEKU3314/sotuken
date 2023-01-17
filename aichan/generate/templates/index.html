@@ -22,7 +22,7 @@
         <div class="reasons-row fixed">
             <div class="reasons-row_body">
                 <h2>
-                    <a href="../templates/generate.html">画像生成</a>
+                    <a href="{% url 'generate:generate' %}">画像生成</a>
                 </h2>
                 
                     空や桜並木、ロボット、人物に至るまでキーワードを選択することで、画像生成することができます
@@ -36,7 +36,7 @@
     <div class="reasons-row">
         <div class="reasons-row_body">
             <h2>
-                    <a href="">画像加工</a>
+                    <a href="{% url 'modify:modify' %}">画像加工</a>
             </h2>
             <p>
                 画像をアップロードし、お好みの画像加工をすることができます
@@ -50,7 +50,7 @@
     <div class="reasons-row fixed">
         <div class="reasons-row_body">
             <h2>
-                <a href="">画像識別</a>
+                <a href="{% url 'identify:identify' %}">画像識別</a>
             </h2>
             <p>
                 画像をアップロードし、画像識別をすることができます

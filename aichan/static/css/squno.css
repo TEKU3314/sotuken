@@ -181,7 +181,6 @@
 {
     display: none;
     float: left;
-
     height: 100%;
     min-height: 1px;
 }
@@ -295,22 +294,3 @@ a:hover{
 	color: orange; /*-- 文字色をオレンジ色 --*/
 }
 
-.button {
-  display       : inline-block;
-  border-radius : 6%;          /* 角丸       */
-  font-size     : 18pt;        /* 文字サイズ */
-  text-align    : center;      /* 文字位置   */
-  cursor        : pointer;     /* カーソル   */
-  padding       : 12px 17px;   /* 余白       */
-  background    : #ffa64d;     /* 背景色     */
-  color         : #ffffff;     /* 文字色     */
-  line-height   : 1em;         /* 1行の高さ  */
-  transition    : .3s;         /* なめらか変化 */
-  box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
-  border        : 2px solid #ffa64d;    /* 枠の指定 */
-}
-.button:hover {
-  box-shadow    : none;        /* カーソル時の影消去 */
-  color         : #ffa64d;     /* 背景色     */
-  background    : #ffffff;     /* 文字色     */
-}

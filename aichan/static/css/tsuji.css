@@ -1,3 +1,67 @@
 .my-div-style {
     margin-top:6rem;
+    margin-left:6rem;
 }
+
+.sub_text {
+    margin-left:10%;
+}
+
+.title_akutan {
+    background: linear-gradient(transparent 70%, #E57CDD 70%);
+    width:25%;
+    margin-left:10%;
+    text-align: center;
+}
+
+.title_hosikawa {
+    background: linear-gradient(transparent 70%, #FAB80D 70%);
+    width:25%;
+    margin-left:10%;
+    text-align: center;
+}
+
+.button_akutan {
+    display       : inline-block;
+    border-radius : 6%;          /* 角丸       */
+    font-size     : 18pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 12px 17px;   /* 余白       */
+    background    : #fe5dd8;     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
+    border        : 2px solid #ffa64d;    /* 枠の指定 */
+    margin-left:20%;
+  }
+
+  .button_akutan:hover {
+    box-shadow    : none;        /* カーソル時の影消去 */
+    color         : #ffa64d;     /* 背景色     */
+    background    : #ffffff;     /* 文字色     */
+  }
+
+  .button_hosikawa {
+    display       : inline-block;
+    border-radius : 6%;          /* 角丸       */
+    font-size     : 18pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 12px 17px;   /* 余白       */
+    background    : #FAB80D;     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
+    border        : 2px solid #ffa64d;    /* 枠の指定 */
+    margin-left:70%;
+  }
+  .button_hosikawa:hover {
+    box-shadow    : none;        /* カーソル時の影消去 */
+    color         : #ffa64d;     /* 背景色     */
+    background    : #ffffff;     /* 文字色     */
+  }
+  
+  

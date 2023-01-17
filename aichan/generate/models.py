@@ -6,8 +6,8 @@ class Type(models.Model):
 
 class Word(models.Model):
     """単語モデル"""
-    word = models.CharField(max_length=25)
-    word_en = models.CharField(max_length=25)
+    word = models.CharField(max_length=50)
+    word_en = models.CharField(max_length=50)
     count = models.IntegerField(default=0)
     typeid = models.ForeignKey(Type,on_delete=models.PROTECT)
 

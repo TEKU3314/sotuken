@@ -7,6 +7,9 @@ from PIL import Image
 
 import numpy as np
 
+import torch
+from torch import autocast
+
 import cv2
 import json
 import base64
@@ -56,7 +59,8 @@ def make(request):
     HF_TOKEN = "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"
 
     #StableDiffusionパイプライン設定
-    pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", use_auth_token=HF_TOKEN)
+    #pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", use_auth_token=HF_TOKEN)
+    pipe = StableDiffusionPipeline.from_pretrained("hakurei/waifu-diffusion", torch_dtype=torch.float32)
     print('--------------------------------------------------------------------------')
     #pipe = StableDiffusionPipeline.from_pretrained("hakurei/waifu-diffusion", use_auth_token=HF_TOKEN)
     #使用するデバイスを設定

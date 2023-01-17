@@ -9,6 +9,8 @@
 <!--<link rel="stylesheet" href="./css/tabi.css">-->
 <div class="my-div-style">
 
+    <h1 class="title_hosikawa" id="title">☆　画像アップロード　☆</h1><br>
+
     <!--　FORM　-->
     <form action="{% url 'generate:make' %}" id="ajax-number" method="post">
         {% csrf_token %}
@@ -77,7 +79,7 @@
             </div>                    
         </div>
         <div style="text-align: center;">            
-            <input type="submit" value="生成" class="button">
+            <input type="submit" value="生成" class="button_hosikawa">
         </div>
         
     </form>   
@@ -202,7 +204,7 @@
                     Push.create('こんにちは！', {
                         body: '画像が生成できました！',
                         icon: 'index.jpg',
-                        timeout: 10000,
+                        timeout: 100000,
                         onClick: function () {
                             this.close();
                             location.href = url;

@@ -9,7 +9,7 @@
 <!--<link rel="stylesheet" href="./css/tabi.css">-->
 <div class="my-div-style">
 
-    <h1>画像加工</h1>
+    <h1 class="title_akutan" id="title">⚓　画像修正　⚓</h1><br>
 
     <form id="ajax-file-send" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -26,7 +26,7 @@
         <input type="hidden" value={{ ID }} name="id">
 
         <div style="text-align: center;">            
-            <input type="submit" value="生成" class="button" name="submit">
+            <input type="submit" value="生成" class="button_akutan" name="submit">
         </div>
     </form>
 
