@@ -9,7 +9,7 @@
 <!--<link rel="stylesheet" href="./css/tabi.css">-->
 <div class="my-div-style">
 
-    <h1 class="title_akutan" id="title">⚓　画像修正　⚓</h1><br>
+    <h1 class="title_akutan" id="title">画像修正</h1><br>
 
     <form id="ajax-file-send" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -19,6 +19,37 @@
                 <div>                               
                     幅：<input type="text" id="width" name="width">
                     高さ：<input type="text" id="height" name="height">                                                          
+                </div>                      
+            </div>                    
+        </div>
+
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>画像のノイズ除去・平滑化処理</h2>
+                <div>                               
+                    <label><input type="checkbox" name="filter" class="filter" value="1">平滑化フィルタ</label><br>
+                    <label><input type="checkbox" name="filter" class="filter" value="2">メディアンフィルタ</label><br>
+                    <label><input type="checkbox" name="filter" class="filter" value="3">ガウシアンフィルタ</label><br>
+                    <label><input type="checkbox" name="filter" class="filter" value="4">バイラテラルフィルタ</label>                                               
+                </div>                      
+            </div>                    
+        </div>
+
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>モノクロ変換</h2>
+                <div>
+                    <label><input type="checkbox" name="mono" class="mono" id="mono">モノクロ</label>                                                              
+                </div>                      
+            </div>                    
+        </div>
+
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>ガンマ補正</h2>
+                <div>                               
+                    ガンマ値：<input type="text" id="gamma" name="gamma"><br>
+                    ※画像を明るくしたい場合は１より大きく、暗くしたい場合は小さく（-は使用しない）してください。
                 </div>                      
             </div>                    
         </div>
@@ -72,10 +103,20 @@ $('#ajax-file-send').on('submit', function(e) {
     e.preventDefault();
     var width='';
     var height='';
+    var filter='';
+    var mono='';
+    var gamma='';
     var id='';
 
     width = $('input[name="width"]').val();
     height = $('input[name="height"]').val();
+    if($('input[name="filter"]:checked').val() != undefined) {
+                filter = $('input[name="filter"]:checked').val();
+                console.log(filter);
+            }
+    mono = document.getElementById('mono');
+    mono = mono.checked;
+    gamma = $('input[name="gamma"]').val();
     id = $('input[name="id"]').val();
 
     console.log(width);
@@ -89,6 +130,9 @@ $('#ajax-file-send').on('submit', function(e) {
         'data': {
             "width": width,
             "height": height,
+            "filter": filter,
+            "mono": mono,
+            "gamma": gamma,
             "id": id,
         }
     })
@@ -111,6 +155,17 @@ $('#ajax-file-send').on('submit', function(e) {
         });
     });
 });
+
+$(function(){
+  $('.filter').on('click', function() {
+    if ($(this).prop('checked')){
+      // 一旦全てをクリアして再チェックする
+      $('.filter').prop('checked', false);
+      $(this).prop('checked', true);
+    }
+  });
+});
+
 </script>
 {% endblock %}
 

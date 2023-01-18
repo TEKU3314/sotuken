@@ -7,11 +7,11 @@
 {% block contents %}
 <div class="my-div-style">
 
-    <h1 class="title_akutan" id="title">⚓　画像アップロード　⚓</h1><br>
+    <h1 class="title_akutan" id="title">画像アップロード</h1><br>
 
-    <span class="sub_text">画像加工したい画像を選択してください</span>
-    <span class></span>
-    <br>
+    <span class="sub_text">画像加工したい画像を選択してください</span><br>
+    <span class="sub_text">※JPEG、PNGのみ画像のみアップロードできます</main></span>
+    <br><br>
     <form method="POST" action="{% url 'modify:file_upload' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
@@ -19,6 +19,7 @@
             <button type="submit" class="button_akutan">送信</button>
         </div>
     </form>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 </div>
 {% endblock %}
