@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Aichan | 画像生成{% endblock %}
+
+{% block contents %}
+<!-- 田平氏　-->
+<!--<link rel="stylesheet" href="./css/tabi.css">-->
+<div class="my-div-style">
+
+    <h1 class="title_hosikawa" id="title">画像アップロード</h1><br>
+
+    <!--　FORM　-->
+    <form action="{% url 'generate:make_background' %}" id="ajax-number" method="post">
+        {% csrf_token %}
+        
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>○○風</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'style' %}
+                <div>                               
+                    <input type="checkbox" name="style"  value="{{ object.word_en}}"> {{ object.word }}                                                        
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
+
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>自然</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'nature' %}
+                <div>    
+                   <input type="checkbox" name="nature"  value="{{ object.word_en}}"> {{ object.word }}
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
+
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>建物</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'building' %}
+                <div>    
+                   <input type="checkbox" name="building"  value="{{ object.word_en}}"> {{ object.word }}
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
+
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>海</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'sea' %}
+                <div>    
+                   <input type="checkbox" name="sea"  value="{{ object.word_en}}"> {{ object.word }}
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
+    
+        <div class="reasons-row fixed">
+            <div class="reasons-row_body">
+                <h2>動物</h2>
+                {% for object in object_list %}    
+                {% if object.name ==  'animal' %}
+                <div>    
+                   <input type="checkbox" name="animal"  value="{{ object.word_en}}"> {{ object.word }}
+                </div>
+                {% endif %}
+                {% endfor %}                        
+            </div>                    
+        </div>
+        <div style="text-align: center;">            
+            <input type="submit" value="生成" class="button_hosikawa">
+        </div>
+        
+    </form>   
+
+    <!-- ダイアログ　-->
+    <div class="msg"></div>
+    <div id="loadingFacebookG" class="hide">
+        <!-- <div id="loadingFacebookG" class="loading hide"></div> -->
+            <div id="blockG_1" class="loading hide"></div>
+            <div id="blockG_2" class="loading hide"></div>
+            <div id="blockG_3" class="loading hide"></div>
+            <!-- <div id="blockG_4" class="loading"></div> -->
+            <span></span>
+            <span></span>
+            <span></span>
+            <!-- <p>LOADING</p> -->
+     </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="{% static 'js/squno.js' %}"></script>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        var csrftoken = getCookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+                //➀loading画面を作成する
+                $('.loading').removeClass('hide');
+            }
+        });
+
+        //ajaxで送信
+        $('#ajax-number').on('submit', function(e) {
+            e.preventDefault();
+
+            var style='';
+            var nature = '';
+            var building = '';
+            var sea = '';
+            var animal = '';
+
+            //〇〇風
+            if($('input[name="style"]:checked').val() != undefined) {
+                style = $('input[name="style"]:checked').val();
+                console.log(style);
+            }
+
+            //自然
+            if($('input[name="nature"]:checked').val() != undefined) {
+                nature = $('input[name="nature"]:checked').val();
+                console.log(nature);
+            }
+
+            //建物
+            if($('input[name="building"]:checked').val() != undefined) {
+                building = $('input[name="building"]:checked').val();
+                console.log(building);
+            }
+
+            //海
+            if($('input[name="sea"]:checked').val() != undefined) {
+                sea = $('input[name="sea"]:checked').val();
+                console.log(sea);
+            }
+
+            //動物
+            if($('input[name="animal"]:checked').val() != undefined) {
+                animal = $('input[name="animal"]:checked').val();
+                console.log(animal);
+            }
+
+            $.ajax({
+                'url': '{% url "generate:make_girl" %}',
+                'type': 'POST',
+                //➁チェックボックスで選択したものをdata送る
+                'data': {
+                    "style": style,
+                    "nature": nature,
+                    "building": building,
+                    "sea": sea,
+                    "animal": animal,
+                },
+                'dataType': 'json',
+            })
+            .done(function(response){
+                //➀loading画面を作成する
+                $('.loading').removeClass('hide');
+                console.log(response.result);
+                url = 'http://127.0.0.1:8000/download/' + response.result + '/'
+                console.log(url)
+                $('.loading').hide();  
+                
+                //push.js
+                    Push.create('こんにちは！', {
+                        body: '画像が生成できました！',
+                        icon: 'index.jpg',
+                        timeout: 100000,
+                        onClick: function () {
+                            this.close();
+                            location.href = url;
+                        }
+                    });
+            });
+        });
+</script>
+{% endblock %}
+

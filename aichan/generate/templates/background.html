@@ -14,19 +14,6 @@
     <!--　FORM　-->
     <form action="{% url 'generate:make_background' %}" id="ajax-number" method="post">
         {% csrf_token %}
-
-        <div class="reasons-row fixed">
-            <div class="reasons-row_body">
-                <h2>○○風</h2>
-                {% for object in object_list %}    
-                {% if object.name ==  'style' %}
-                <div>                               
-                    <input type="checkbox" name="style"  value="{{ object.word_en}}"> {{ object.word }}                                                        
-                </div>
-                {% endif %}
-                {% endfor %}                        
-            </div>                    
-        </div>
         
         <div class="reasons-row fixed">
             <div class="reasons-row_body">
@@ -194,7 +181,7 @@
             }
 
             $.ajax({
-                'url': '{% url "generate:make" %}',
+                'url': '{% url "generate:make_background" %}',
                 'type': 'POST',
                 //➁チェックボックスで選択したものをdata送る
                 'data': {
